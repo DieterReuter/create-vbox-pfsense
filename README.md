@@ -41,15 +41,17 @@ There are some more useful scripts:
 
 ## ISO Overlays
 You can now easily modify and overwrite every file within the original ISO image. 
-Just make a copy of a specific file, put it in the `overlay-iso` folder, and change these files.
+Just make a copy of a specific file, put it in the `iso-overlay` folder, and change these files.
 You have to preserve the original directory structure.
 
 In the build process we'll mount and copy the original ISO image into a writable folder and merge it with the
-`overlay-iso` folder.  All files from the overlay will be copied over the original ISO folder.  Now it's possible
-to fully customize the content of the ISO.
+`iso-overlay` folder.  All files from the overlay will be copied over the original ISO folder.  Now it's possible
+to fully customize the content of the ISO image before installing a new VM.
 
-As a good point to start tweaking the ISO image, I've added a mofified version of `boot/beastie.4th` with the origianl FreeBSD daemon logo.
-And as another example you'll find a modified `conf.default/config.xml` with a LAN network set to `192.168.100.x` instead of the original `192.168.1.x` network.
+As a good starting point for tweaking the ISO image, I've added a modified version of `boot/beastie.4th` 
+with the original FreeBSD daemon logo.
+And as another example you'll find a modified `conf.default/config.xml` with a LAN network 
+set to `192.168.100.x` instead of the original `192.168.1.x` network.
 
 
 # Licensing
