@@ -1,3 +1,5 @@
 *.swp
 *~
 cache
+conf
+config.xml*
