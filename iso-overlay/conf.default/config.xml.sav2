@@ -185,7 +185,7 @@
 			<descr><![CDATA[System Administrator]]></descr>
 			<scope>system</scope>
 			<groupname>admins</groupname>
-			<password>$1$uITrxCly$nIlNtHSuZeGAiOAsXnY2m/</password>
+			<password>$1$DHs8NxEX$8Q7iPaVrsW/Q68MBpT4LI1</password>
 			<uid>0</uid>
 			<priv>user-shell-access</priv>
 			<md5-hash>3a4b4c4dde494d2cec3e0ea68e437e17</md5-hash>
@@ -284,70 +284,6 @@
 		</ipsecpassthru>
 	</nat>
 	<filter>
-		<rule>
-			<id/>
-			<type>pass</type>
-			<interface>wan</interface>
-			<ipprotocol>inet</ipprotocol>
-			<tag/>
-			<tagged/>
-			<max/>
-			<max-src-nodes/>
-			<max-src-conn/>
-			<max-src-states/>
-			<statetimeout/>
-			<statetype>keep state</statetype>
-			<os/>
-			<protocol>tcp</protocol>
-			<source>
-				<any/>
-			</source>
-			<destination>
-				<any/>
-				<port>443</port>
-			</destination>
-			<descr><![CDATA[Vagrant allow HTTPS from WLAN ]]></descr>
-			<updated>
-				<time>1390086076</time>
-				<username>admin@192.168.178.23</username>
-			</updated>
-			<created>
-				<time>1390086076</time>
-				<username>admin@192.168.178.23</username>
-			</created>
-		</rule>
-		<rule>
-			<id/>
-			<type>pass</type>
-			<interface>wan</interface>
-			<ipprotocol>inet6</ipprotocol>
-			<tag/>
-			<tagged/>
-			<max/>
-			<max-src-nodes/>
-			<max-src-conn/>
-			<max-src-states/>
-			<statetimeout/>
-			<statetype>keep state</statetype>
-			<os/>
-			<protocol>tcp</protocol>
-			<source>
-				<any/>
-			</source>
-			<destination>
-				<any/>
-				<port>443</port>
-			</destination>
-			<descr><![CDATA[Vagrant allow HTTPS from WLAN IPv6]]></descr>
-			<updated>
-				<time>1390086107</time>
-				<username>admin@192.168.178.23</username>
-			</updated>
-			<created>
-				<time>1390086107</time>
-				<username>admin@192.168.178.23</username>
-			</created>
-		</rule>
 		<rule>
 			<type>pass</type>
 			<ipprotocol>inet</ipprotocol>
@@ -519,8 +455,8 @@
 		<sequence>system_information-container:col1:show,captive_portal_status-container:col1:close,carp_status-container:col1:close,cpu_graphs-container:col1:close,gateways-container:col1:close,gmirror_status-container:col1:close,installed_packages-container:col1:close,interface_statistics-container:col1:close,interfaces-container:col2:show,ipsec-container:col2:close,load_balancer_status-container:col2:close,log-container:col2:close,picture-container:col2:close,rss-container:col2:close,services_status-container:col2:close,traffic_graphs-container:col2:close</sequence>
 	</widgets>
 	<revision>
-		<time>1390086130</time>
-		<description><![CDATA[admin@192.168.178.23: /firewall_rules.php made unknown change]]></description>
+		<time>1390085028</time>
+		<description><![CDATA[admin@192.168.178.23: /wizard.php made unknown change]]></description>
 		<username>admin@192.168.178.23</username>
 	</revision>
 	<openvpn/>
