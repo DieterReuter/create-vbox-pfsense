@@ -115,12 +115,12 @@ at-xy ."         `--{__________) [0m"
 	s" loader_logo" getenv
 	dup -1 = if
 		drop
-		beastiebw-logo
+		fbsdbw-logo
 		exit
 	then
 	2dup s" fbsdbw" compare-insensitive 0= if
 		2drop
-		beastiebw-logo
+		fbsdbw-logo
 		exit
 	then
 	2dup s" beastiebw" compare-insensitive 0= if
@@ -139,7 +139,7 @@ at-xy ."         `--{__________) [0m"
 		exit
 	then
 	2drop
-        beastiebw-logo
+	fbsdbw-logo
 ;
 
 : acpienabled? ( -- flag )
