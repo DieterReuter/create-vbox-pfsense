@@ -190,6 +190,15 @@
 			<password>$1$dSJImFph$GvZ7.1UbuWu.Yb8etC0re.</password>
 			<uid>0</uid>
 			<priv>user-shell-access</priv>
+                </user>
+		<user>
+			<name>vagrant</name>
+			<descr><![CDATA[Vagrant System Administrator]]></descr>
+			<scope>system</scope>
+			<groupname>admins</groupname>
+			<password>$1$LZd71H/l$YetOFvZ1fFmd7LogQT7we/</password>
+			<uid>0</uid>
+			<priv>user-shell-access</priv>
 		</user>
 		<nextuid>2000</nextuid>
 		<nextgid>2000</nextgid>
@@ -213,7 +222,8 @@
 		<bogons>
 			<interval>monthly</interval>
 		</bogons>
-		<kill_states/>
+                <kill_states/>
+            	<enablesshd/>
 	</system>
 	<interfaces>
 		<wan>
@@ -452,6 +462,32 @@
 	</nat>
 	<filter>
 		<!-- <tcpidletimeout></tcpidletimeout> -->
+		<rule>
+			<type>pass</type>
+			<ipprotocol>inet</ipprotocol>
+			<descr><![CDATA[Vagrant allow SSH from WLAN]]></descr>
+                        <interface>wan</interface>
+                        <protocol>tcp</protocol>
+			<source>
+                                <any/>
+			</source>
+			<destination>
+                                <port>22</port>
+			</destination>
+		</rule>
+		<rule>
+			<type>pass</type>
+			<ipprotocol>inet6</ipprotocol>
+			<descr><![CDATA[Vagrant allow SSH from WLAN IPv6]]></descr>
+                        <interface>wan</interface>
+                        <protocol>tcp</protocol>
+			<source>
+                                <any/>
+			</source>
+			<destination>
+                                <port>22</port>
+			</destination>
+		</rule>
 		<rule>
 			<type>pass</type>
 			<ipprotocol>inet</ipprotocol>
