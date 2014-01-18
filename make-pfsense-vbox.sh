@@ -13,7 +13,7 @@ vmname="pfSense-VBox"
 dlsite="http://files.nl.pfsense.org/mirror/downloads"
 vboxdir=$(VBoxManage list systemproperties \
             | awk '/^Default.machine.folder/ {print $0}' | cut -c 34- )
-CACHE="./image-cache"
+CACHE="./cache"
 mkdir -p "$CACHE"
 ISO_32BIT="pfSense-LiveCD-2.1-RELEASE-i386.iso"
 ISO_64BIT="pfSense-LiveCD-2.1-RELEASE-amd64.iso"
@@ -80,10 +80,23 @@ if [ ! -f "${CACHE}/${ISO_FILE}" ]; then
   # Extract original ISO image
   gzip -d -c "${CACHE}/${ISO_FILE}.gz" > "${CACHE}/${ISO_FILE}" 
   #gzip -d -c "${CACHE}/${ISO_FILE}.gz" > "${VM_ISO_FILE}" 
+  rm -f "${CACHE}/${ISO_FILE}.overlay"
 fi
-if [ ! -f "${VM_ISO_FILE}" ]; then
-  cp "${CACHE}/${ISO_FILE}" "${VM_ISO_FILE}" 
+
+# Create new ISO image with overlay
+if [ ! -f "${CACHE}/${ISO_FILE}.overlay" ]; then
+  #cp "${CACHE}/${ISO_FILE}" "${CACHE}/${ISO_FILE}.overlay"
+  rm -f "./image-mac.iso"
+  ./mac-mount-iso.sh
+  ./mac-overlay-iso.sh
+  ./mac-create-iso.sh
+  mv "./image-mac.iso" "${CACHE}/${ISO_FILE}.overlay"
 fi
+
+# Deploy ISO image to VM
+#if [ ! -f "${VM_ISO_FILE}" ]; then
+  cp "${CACHE}/${ISO_FILE}.overlay" "${VM_ISO_FILE}" 
+#fi
 
 #
 # Create VirtualBox VM
@@ -113,12 +126,12 @@ else
       --medium "${vboxdir}/${vmname}/pfsense-disk.vdi"
 
     # Set misc settings
+#    VBoxManage modifyvm "${vmname}" --nic1 nat
     VBoxManage modifyvm "${vmname}" --nic1 bridged
     VBoxManage modifyvm "${vmname}" --bridgeadapter1 "en1: Wi-Fi (AirPort)"
-#    VBoxManage modifyvm "${vmname}" --nic1 nat
     VBoxManage modifyvm "${vmname}" --natpf1 "SSH,tcp,,${sshport},,22"
     VBoxManage modifyvm "${vmname}" --nic2 intnet
-    VBoxManage modifyvm "${vmname}" --boot1 dvd --boot2 disk --boot3 none
+    VBoxManage modifyvm "${vmname}" --boot1 disk --boot2 dvd --boot3 none
     VBoxManage modifyvm "${vmname}" --memory ${memsize}
 
     # Set serial console
@@ -134,6 +147,7 @@ fi
 #
 echo "Starting Virtual Machine: ${vmname}"
 echo "...start:  VBoxManage startvm ${vmname}" 
+echo "...stop:   VBoxManage controlvm ${vmname} poweroff"
 echo "...delete: VBoxManage unregistervm ${vmname} -d" 
 
 
