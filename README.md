@@ -26,6 +26,18 @@ Just clone this repo and build/start your pfSense VBox with the following comman
     ./make-pfsense-vbox.sh
 
 
+## Default usernames and passwords
+
+User `root` with password `vagrant`
+
+User `admin` with password `pfsense`
+
+User `vagrant` with password `vagrant`
+
+The user `vagrant` has uid=0, it's a root user. 
+Attention, the `sudo` command will not work in pfSense.
+
+
 ## First version is already working
 This is the first running version of my script “make-pfsense-vbox.sh”. 
 It will download the pfSense 2.1 ISO and creates a complete VM for use with VirtualBox.
