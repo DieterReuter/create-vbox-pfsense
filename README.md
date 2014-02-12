@@ -1,7 +1,7 @@
 create-vbox-pfsense
 ===================
 
-Creates a complete VirtualBox machine for pfSense
+Creates a complete VirtualBox machine for pfSense.
 
 
 # Prerequisites
