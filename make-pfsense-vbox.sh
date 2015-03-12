@@ -15,8 +15,13 @@ vboxdir=$(VBoxManage list systemproperties \
             | awk '/^Default.machine.folder/ {print $0}' | cut -c 34- )
 CACHE="./cache"
 mkdir -p "$CACHE"
-ISO_32BIT="pfSense-LiveCD-2.1-RELEASE-i386.iso"
-ISO_64BIT="pfSense-LiveCD-2.1-RELEASE-amd64.iso"
+
+#
+# If the download file is not found, please update the version below to one that does
+#
+
+ISO_32BIT="pfSense-LiveCD-2.2-RELEASE-i386.iso"
+ISO_64BIT="pfSense-LiveCD-2.2-RELEASE-amd64.iso"
 ISO_FILE="$ISO_32BIT"
 ISO_LINK="$dlsite/$ISO_FILE.gz"
 
