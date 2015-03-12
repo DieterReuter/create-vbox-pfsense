@@ -65,6 +65,9 @@ with the original FreeBSD daemon logo.
 And as another example you'll find a modified `conf.default/config.xml` with a LAN network 
 set to `192.168.100.x` instead of the original `192.168.1.x` network.
 
+## Troubleshooting
+
+If the version of pfsense is not found on execution of the make-pfsense-vbox.sh script, please update the script with the latest version available and re-run it (and preferably also file a pull request!).
 
 # Licensing
 Copyright (c) 2014 Dieter Reuter
